@@ -21,19 +21,48 @@
 
         <figure>
           <img src="./src/img/bulbizarre.jpg" alt="type feuille" />
-          <figcaption>Pokémon Graine. Taille : 0,7m, poids: 6,9kg</figcaption>
+          <figcaption class="appearence_details">
+            Pokémon Graine. Taille : 0,7m, poids: 6,9kg
+          </figcaption>
         </figure>
-        <div class="pokemon__type">
-          <img src="src/img/leaf.png" alt="type feuille" />
-          <img src="src/img/leaf.png" alt="type feuille" />
-        </div>
-        <div class="pokemon__attaque">
-          <p>
-            Vampigraine A moins que tous les dégats infligés par cette attaque
-            ne soient prévenus, vous pouvez retirer 1 marqueur de dégats de
-            Bulbizarre
+        <section class="attack">
+          <div class="pokemon__type">
+            <img src="src/img/leaf.png" alt="type feuille" />
+            <img src="src/img/leaf.png" alt="type feuille" />
+          </div>
+          <div class="attack_description">
+            <h2 class="attack_name">Vampigraine</h2>
+            <p class="attack_details">
+              A moins que tous les dégats infligés par cette attaque ne soient
+              prévenus, vous pouvez retirer 1 marqueur de dégats de Bulbizarre
+            </p>
+          </div>
+          <div class="attack_damage">
+            <p>20</p>
+          </div>
+        </section>
+        <section class="pokemon_capacité">
+          <div class="capacité_bar"></div>
+          <div class="pokemon__pouvoir">
+            <div class="pokemon__faiblesse">
+              <p>faiblesse</p>
+              <img src="src/img/fire.png" alt="type feu" />
+            </div>
+            <div class="pokemon__résistance">
+              <p>Résistance</p>
+            </div>
+            <div class="pokemon__retraite">
+              <p>Coût de retraite</p>
+              <img src="src/img/normal.png" alt="type normal" />
+            </div>
+          </div>
+        </section>
+        <footer>
+          <p class="texte__fin">
+            Il a une étrange graine plantée sur son dos. Elle grandit avec lui
+            depuis la naissance. Niv13 No. 1
           </p>
-        </div>
+        </footer>
       </article>
     </main>
   </body>
