@@ -1,12 +1,36 @@
-@import 'vendors/reset.scss';
+@import "vendors/reset.scss";
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+body {
+  border: 5px solid rgb(207, 207, 0);
+  padding: 10px;
+  background-color: #32cd32;
+}
+main {
+  article {
+    .pokemon__titre {
+      display: flex;
+      justify-content: space-between;
+      h2 {
+      }
+    }
   }
-  
-  img {
-    max-width: 100%;
+}
+.pokemon_capacité {
+  .capacité_bar {
+    border-bottom: 1px solid black;
   }
-  body{
-    border: 5px linear-gradient(#e66465, #9198e5);
-    height:100vh;
+  .pokemon__pouvoir {
+    display: flex;
+    justify-content: space-between;
+    div {
+      text-align: center;
+      font-size: 0.8rem;
+    }
   }
+}
