@@ -10,19 +10,73 @@ body {
   border: 5px solid rgb(207, 207, 0);
   padding: 10px;
   background-color: #32cd32;
+  min-height: 100vh;
 }
 main {
   article {
-    .pokemon__titre {
+    .titre {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       h2 {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+    figure {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 7px;
+      align-items: center;
+      img {
+        border: 5px solid rgb(224, 224, 0);
+        box-shadow: 10px 6px 7px rgba(0, 0, 0, 0.75);
+      }
+      figcaption {
+        font-size: 0.8rem;
+        font-style: italic;
+        font-weight: bold;
+        background-color: #fcfc1e;
+        width: fit-content;
+        padding: 3px;
+        border-radius: 2px;
+      }
+    }
+    .attack {
+      display: flex;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      .attack_type {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+      .attack_description {
+        flex: 2.5;
+        .attack_details {
+          strong {
+            font-size: 1rem;
+            font-weight: bold;
+          }
+          font-size: 0.8rem;
+        }
+      }
+      .attack_damage {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
       }
     }
   }
 }
 .pokemon_capacité {
-  .capacité_bar {
+  .pokemon_capacitébar {
     border-bottom: 1px solid black;
   }
   .pokemon__pouvoir {
