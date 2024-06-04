@@ -195,3 +195,5 @@ Voici le nouvel objectif à atteindre :
 - Reférence : [CSS Tricks Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - Outil : [Flexulator, calculateur de flexbox](https://www.flexulator.com/)
 - Entraînement : [Flexbox Froggy](https://flexboxfroggy.com/#fr)
+
+## Site à visiter
