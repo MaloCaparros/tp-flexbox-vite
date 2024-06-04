@@ -1,3 +1,64 @@
-h1{
-    color: red;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+.mainhome{
+    background-image: url(./../photo/fond1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;        
+    background-attachment: fixed;
+    background-position: center;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    height:100vh;
+    gap:150px;
+}
+.mainhome_title{
+    font-size:64px;
+    width:80%;
+    margin:0 auto;
+    text-align:center;
+    line-height: 0.9;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.mainhome_link{
+    text-decoration:none;
+    color:white;
+    background-color:#257CFF;
+    padding:15px 30px;
+    margin:0 auto;
+    border-radius:10px;
+    text-align: center;
+    font-size:40px;
+}
+.gamehome{
+    background-image: url(./../photo/fond2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;        
+    background-attachment: fixed;
+    background-position: center;
+}
+.gamehome_img{
+    width:100%;
+    position:absolute;
+    top:63vh;
+    transform:rotate(-15deg);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:2
+}
+.gamehome_img2{
+    position:absolute;
+    width:500%;
+    transform:translate(-550px, -400px);
+    z-index:1;
+}
+.gamehome_imgcontainer{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    position:relative;
 }
