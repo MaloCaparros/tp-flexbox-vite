@@ -35,7 +35,6 @@ window.addEventListener("DOMContentLoaded", function () {
       const info = acceleration.y.toFixed(3);
       timerElement.textContent = timeLeft;
 
-      while (timeLeft > 0) {
         let countdown = setInterval(() => {
           timeLeft--;
           timerElement.textContent = timeLeft;
@@ -60,5 +59,4 @@ window.addEventListener("DOMContentLoaded", function () {
         }, 1000);
       }
     }
-  }
 });
