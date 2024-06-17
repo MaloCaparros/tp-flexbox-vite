@@ -64,10 +64,11 @@ window.addEventListener("DOMContentLoaded", function () {
       if (sensor) {
         sensor.stop();
       }
+      navigator.vibrate(1000);
       alert(
         "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
       );
-      navigator.vibrate(500);
+      
     }
   }, 1000);
 });
