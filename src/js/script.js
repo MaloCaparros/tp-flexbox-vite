@@ -65,7 +65,7 @@ window.addEventListener("DOMContentLoaded", function () {
       if (sensor) {
         sensor.stop();
       }
-      navigator.vibrate(20000);
+      navigator.vibrate(5000);
       alert(
         "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
       );
