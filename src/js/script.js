@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function () {
   let timeLeft = 60;
   function accelerationHandler(acceleration) {
     if (acceleration && acceleration.y !== null) {
-      const info = `Y: ${acceleration.y.toFixed(3)}`;
+      const info = acceleration.y.toFixed(3);
       while (timeLeft > 0) {
         if (info < 0.5) {
           score += 0.5;
