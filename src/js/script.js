@@ -59,7 +59,7 @@ window.addEventListener("DOMContentLoaded", function () {
   let countdown = setInterval(() => {
     timeLeft--;
     timerElement.textContent = timeLeft;
-    this.navigator.vibrate(100);
+    navigator.vibrate(500);
 
     if (timeLeft <= 0) {
       clearInterval(countdown);
