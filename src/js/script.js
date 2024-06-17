@@ -1,8 +1,9 @@
 window.addEventListener('DOMContentLoaded', function () {
   const timerElement = document.getElementById("timer");
-  const scoreElement = document.getElementById("moAccel");
+  const counterElement = document.getElementById("counter");
   let countdown;
   let sensor;
+  let counter = 0.0;
 
   function startSensor() {
       if ('LinearAccelerationSensor' in window) {
@@ -13,22 +14,27 @@ window.addEventListener('DOMContentLoaded', function () {
                   intervalHandler(Math.round(sensor.timestamp - lastReadingTimestamp));
               }
               lastReadingTimestamp = sensor.timestamp;
-              accelerationHandler(sensor.y, 'moAccel');
+              handleAcceleration(sensor.y);
           });
           sensor.start();
       } else if ('DeviceMotionEvent' in window) {
           window.addEventListener('devicemotion', (eventData) => {
-              const y = eventData.acceleration.y !== null ? eventData.acceleration.y.toFixed(3) : 'N/A';
-              scoreElement.textContent = `Y: ${y}`;
+              handleAcceleration(eventData.acceleration.y);
           }, false);
       } else {
           apiElement.innerHTML = 'No Accelerometer & Gyroscope API available';
       }
   }
 
-  function accelerationHandler(y, targetId) {
-      const info = `Y: ${y !== null ? y.toFixed(3) : 'N/A'}`;
-      document.getElementById(targetId).innerHTML = info;
+  function handleAcceleration(y) {
+      if (y !== null) {
+          if (Math.abs(y) > 1) {
+              counter += 0.5;
+          } else {
+              counter += 0.1;
+          }
+          counterElement.textContent = counter.toFixed(1);
+      }
   }
 
   function intervalHandler(interval) {
@@ -50,7 +56,7 @@ window.addEventListener('DOMContentLoaded', function () {
           if (sensor) {
               sensor.stop();
           }
-          alert("Temps écoulé !");
+          alert(`Temps écoulé ! Votre compteur est à ${counter.toFixed(1)}`);
       }
   }, 1000);
 });
