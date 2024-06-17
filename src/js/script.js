@@ -1,63 +1,53 @@
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener('DOMContentLoaded', function () {
   const apiElement = document.getElementById("moApi");
-  let score = 0.0;
   const scoreElement = document.getElementById("moAccel");
   const timerElement = document.getElementById("timer");
 
-  let sensor; 
+  let sensor; // Déclarer sensor pour qu'il soit accessible globalement
 
-  if ("LinearAccelerationSensor" in window) {
-    apiElement.textContent = "Generic Sensor API";
+  if ('LinearAccelerationSensor' in window) {
+    apiElement.textContent = 'Generic Sensor API';
 
     sensor = new LinearAccelerationSensor({ frequency: 60 });
-    sensor.addEventListener("reading", () => {
-      accelerationHandler(sensor);
+    sensor.addEventListener('reading', () => {
+      accelerationHandler(sensor, 'moAccel');
     });
     sensor.start();
-  } else if ("DeviceMotionEvent" in window) {
-    apiElement.textContent = "Device Motion API";
-    window.addEventListener(
-      "devicemotion",
-      (eventData) => {
-        accelerationHandler(eventData.acceleration);
-        intervalHandler(eventData.interval);
-      },
-      false
-    );
+
+  } else if ('DeviceMotionEvent' in window) {
+    apiElement.textContent = 'Device Motion API';
+
+    window.addEventListener('devicemotion', (eventData) => {
+      accelerationHandler(eventData.acceleration, 'moAccel');
+      intervalHandler(eventData.interval);
+    }, false);
+
   } else {
-    apiElement.textContent = "No Accelerometer & Gyroscope API available";
+    apiElement.textContent = 'No Accelerometer & Gyroscope API available';
   }
-  let timeLeft = 60;
 
-  function accelerationHandler(acceleration) {
+  function accelerationHandler(acceleration, targetId) {
     if (acceleration && acceleration.y !== null) {
-      const info = acceleration.y.toFixed(3);
-      timerElement.textContent = timeLeft;
-
-      let countdown = setInterval(() => {
-        timeLeft--;
-        timerElement.textContent = timeLeft;
-        if (info < 0.5) {
-          score += 0.5;
-        }
-        if (info > -0.5 && info < 0.5) {
-          score += 0.1;
-        }
-        if (info > 0.5) {
-          score += 0.5;
-        }
-        scoreElement.textContent = score;
-
-        if (timeLeft <= 0) {
-          clearInterval(countdown);
-          if (sensor) {
-            sensor.stop();
-          }
-          alert("Temps écoulé !, vous avez obtenu un score de " + score);
-          score = 0.0;
-          timeLeft = 60;
-        }
-      }, 1000);
+      const info = `Y: ${acceleration.y.toFixed(3)}`;
+      scoreElement.textContent = info;
+    } else {
+      scoreElement.textContent = 'N/A';
     }
   }
+
+  let timeLeft = 60; // Compte à rebours de 60 secondes
+  timerElement.textContent = timeLeft;
+
+  let countdown = setInterval(() => {
+    timeLeft--;
+    timerElement.textContent = timeLeft;
+
+    if (timeLeft <= 0) {
+      clearInterval(countdown);
+      if (sensor) {
+        sensor.stop();
+      }
+      alert("Temps écoulé !");
+    }
+  }, 1000);
 });
