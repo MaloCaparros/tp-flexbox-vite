@@ -54,6 +54,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   let timeLeft = 20; // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
+  navigator.vibrate(20000);
 
 
   let countdown = setInterval(() => {
@@ -64,7 +65,6 @@ window.addEventListener("DOMContentLoaded", function () {
       if (sensor) {
         sensor.stop();
       }
-      navigator.vibrate(1000);
       alert(
         "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
       );
