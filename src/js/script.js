@@ -57,7 +57,7 @@ window.addEventListener("DOMContentLoaded", function () {
           score = 0.0;
           timeLeft = 60;
         }
-      }, 10000);
+      }, 1000);
     }
   }
 });
