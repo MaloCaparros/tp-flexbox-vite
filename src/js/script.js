@@ -56,6 +56,7 @@ window.addEventListener("DOMContentLoaded", function () {
             }
             alert("Temps écoulé !, vous avez obtenu un score de " + score); 
             score = 0.0;
+            timeLeft = 60;
           }
         }, 10000);
       }
