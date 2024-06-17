@@ -26,18 +26,12 @@ window.addEventListener("DOMContentLoaded", function () {
       (eventData) => {
         accelerationHandler(eventData.acceleration, "moAccel");
         intervalHandler(eventData.interval);
-        vibrate();
       },
       false
     );
   } else {
     apiElement.textContent = "No Accelerometer & Gyroscope API available";
   }
-
-  function vibrate() {
-    navigator.vibrate(20000);
-  }
-  
 
   function accelerationHandler(acceleration, targetId) {
     if (acceleration && acceleration.y !== null) {
@@ -71,6 +65,7 @@ window.addEventListener("DOMContentLoaded", function () {
       if (sensor) {
         sensor.stop();
       }
+      navigator.vibrate(20000);
       alert(
         "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
       );
