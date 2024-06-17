@@ -1,7 +1,7 @@
 const start = document.getElementById("start");
 
 start.addEventListener("click", function () {
-  navigator.vibrate(2000);
+  navigator.vibrate(20000);
   const apiElement = document.getElementById("moApi");
   const scoreElement = document.getElementById("moAccel");
   const timerElement = document.getElementById("timer");
