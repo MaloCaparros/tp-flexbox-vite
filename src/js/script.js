@@ -54,7 +54,8 @@ window.addEventListener("DOMContentLoaded", function () {
             if (sensor) {
               sensor.stop();
             }
-            alert("Temps écoulé !");
+            alert("Temps écoulé !, vous avez obtenu un score de " + score); 
+            score = 0.0;
           }
         }, 10000);
       }
