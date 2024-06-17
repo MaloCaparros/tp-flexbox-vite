@@ -26,12 +26,18 @@ window.addEventListener("DOMContentLoaded", function () {
       (eventData) => {
         accelerationHandler(eventData.acceleration, "moAccel");
         intervalHandler(eventData.interval);
+        vibrate();
       },
       false
     );
   } else {
     apiElement.textContent = "No Accelerometer & Gyroscope API available";
   }
+
+  function vibrate() {
+    navigator.vibrate(20000);
+  }
+  
 
   function accelerationHandler(acceleration, targetId) {
     if (acceleration && acceleration.y !== null) {
@@ -54,7 +60,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   let timeLeft = 20; // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
-  navigator.vibrate(20000);
+  
 
 
   let countdown = setInterval(() => {
