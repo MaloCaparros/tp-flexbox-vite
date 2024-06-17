@@ -32,10 +32,16 @@ window.addEventListener('DOMContentLoaded', function () {
     if (acceleration && acceleration.y !== null) {
       const info = `Y: ${acceleration.y.toFixed(3)}`;
       scoreElement.textContent = info;
-      if (acceleration.y.toFixed(3) > 2){
+      if (acceleration.y.toFixed(3) > 2 || acceleration.y.toFixed(3) < -2){
         score = score + 0.1;
       }
-      pointsElement.textContent = score;
+      if (acceleration.y.toFixed(3) > 2 || acceleration.y.toFixed(3) < -2){
+        score = score + 0.5;
+      }
+      if (acceleration.y.toFixed(3) > 5 || acceleration.y.toFixed(3) < -5){
+        score = score + 1;
+      }
+      pointsElement.textContent = score.toFixed(1);
 
     } else {
       scoreElement.textContent = 'N/A';
@@ -54,7 +60,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (sensor) {
         sensor.stop();
       }
-      alert("Temps écoulé !");
+      alert("Temps écoulé ! vous avez obtenu " + score + " points.");
     }
   }, 1000);
 });
