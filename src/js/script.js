@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', function () {
   const scoreElement = document.getElementById("moAccel");
   const timerElement = document.getElementById("timer");
   const pointsElement = document.getElementById("point");
+  let score = 0;
 
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
 
@@ -32,9 +33,10 @@ window.addEventListener('DOMContentLoaded', function () {
       const info = `Y: ${acceleration.y.toFixed(3)}`;
       scoreElement.textContent = info;
       if (acceleration.y.toFixed(3) > 0.5){
-        pointsElement.textContent = pointsElement.textContent + 1;
+        score++;
+        pointsElement.textContent = score;
       }
-      
+
     } else {
       scoreElement.textContent = 'N/A';
     }
