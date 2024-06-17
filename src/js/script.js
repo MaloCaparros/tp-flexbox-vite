@@ -59,17 +59,15 @@ window.addEventListener("DOMContentLoaded", function () {
   let countdown = setInterval(() => {
     timeLeft--;
     timerElement.textContent = timeLeft;
-    navigator.vibrate(500);
-
     if (timeLeft <= 0) {
       clearInterval(countdown);
       if (sensor) {
         sensor.stop();
       }
-      navigator.vibrate(0);
       alert(
         "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
       );
+      navigator.vibrate(500);
     }
   }, 1000);
 });
