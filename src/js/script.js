@@ -3,15 +3,15 @@ window.addEventListener("DOMContentLoaded", function () {
   let score = 0.0;
   const scoreElement = document.getElementById("moAccel");
   const timerElement = document.getElementById("timer");
+
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
-  let scoreInterval; // Variable pour stocker l'intervalle de mise à jour du score
 
   if ("LinearAccelerationSensor" in window) {
     apiElement.textContent = "Generic Sensor API";
 
     sensor = new LinearAccelerationSensor({ frequency: 60 });
     sensor.addEventListener("reading", () => {
-      accelerationHandler(sensor.y);
+      accelerationHandler(sensor);
     });
     sensor.start();
   } else if ("DeviceMotionEvent" in window) {
@@ -28,52 +28,40 @@ window.addEventListener("DOMContentLoaded", function () {
   } else {
     apiElement.textContent = "No Accelerometer & Gyroscope API available";
   }
+  let scoreboard;
 
-  let timeLeft = 60;
-
-  function accelerationHandler(accelerationY) {
-    if (typeof accelerationY === "number") {
-      const info = accelerationY.toFixed(3);
-
-      // Si l'intervalle est déjà défini, le nettoie
-      if (scoreInterval) {
-        clearInterval(scoreInterval);
-      }
-
-      // Mettre à jour le score toutes les 500 millisecondes
-      scoreInterval = setInterval(() => {
-        if (info < -1 || info > 1) {
-          score += 0.5;
-        } else {
-          score += 0.1;
-        }
-
-        scoreElement.textContent = score.toFixed(1);
-      }, 500);
-    }
-  }
-
-  function intervalHandler(interval) {
-    // Fonction pour gérer l'intervalle, si nécessaire
-  }
-
-  // Compte à rebours de 60 secondes
-  let countdown = setInterval(() => {
-    timeLeft--;
-    timerElement.textContent = timeLeft;
-
-    if (timeLeft <= 0) {
-      clearInterval(countdown);
-      if (sensor) {
-        sensor.stop();
-      }
-      if (scoreInterval) {
-        clearInterval(scoreInterval);
-      }
-      alert("Temps écoulé ! Vous avez obtenu un score de " + score.toFixed(1));
-      score = 0.0;
-      timeLeft = 60;
+  function accelerationHandler(acceleration) {
+    if (acceleration && acceleration.y !== null) {
+      const info = acceleration.y.toFixed(3);
       timerElement.textContent = timeLeft;
+      
+        scoreboard = setInterval(() => {
+            if (info > -0.5 && info < 0.5) {
+              score += 0.1;
+              scoreElement.textContent = score;
+            }
+            if (info < -0.5 || info > 0.5) {
+              score += 0.5;
+              scoreElement.textContent = score;
+            }
+            
+        
+        }, 500);
+      }
     }
-  }, 1000);
+
+    let timeLeft = 60;
+    let countdown = setInterval(() => {
+      timeLeft--;
+      timerElement.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        this.clearInterval(scoreboard);
+        if (sensor) {
+          sensor.stop();
+        }
+        alert("Temps écoulé ! Vous avez obtenu un score de " + score + " points !");
+      }
+    }, 1000);
+
 });
