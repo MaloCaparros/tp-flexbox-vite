@@ -1,7 +1,9 @@
 window.addEventListener('DOMContentLoaded', function () {
   const apiElement = document.getElementById("moApi");
+  let score = 0.0;
   const scoreElement = document.getElementById("moAccel");
   const timerElement = document.getElementById("timer");
+  const count = 0.0;
 
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
 
@@ -25,17 +27,30 @@ window.addEventListener('DOMContentLoaded', function () {
   } else {
     apiElement.textContent = 'No Accelerometer & Gyroscope API available';
   }
-
+  let timeLeft = 60;
   function accelerationHandler(acceleration) {
     if (acceleration && acceleration.y !== null) {
       const info = `Y: ${acceleration.y.toFixed(3)}`;
-      scoreElement.textContent = info;
+      while (timeLeft > 0) {
+        if (acceleration < 0.5) {
+          score += 0.5;
+        }
+        if (acceleration.y > - 0.5 && acceleration.y < 0.5) {
+          score += 0.1;
+        }
+        if (acceleration.y > 0.5) {
+          score += 0.5;
+        }
+      }
+      scoreElement.textContent = score;
     } else {
       scoreElement.textContent = 'N/A';
     }
+   
   }
+ 
 
-  let timeLeft = 60; // Compte à rebours de 60 secondes
+  // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
 
   let countdown = setInterval(() => {
@@ -50,4 +65,5 @@ window.addEventListener('DOMContentLoaded', function () {
       alert("Temps écoulé !");
     }
   }, 1000);
+
 });
