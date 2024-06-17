@@ -1,4 +1,7 @@
-window.addEventListener("DOMContentLoaded", function () {
+const start = document.getElementById("start");
+
+start.addEventListener("click", function () {
+  navigator.vibrate(2000);
   const apiElement = document.getElementById("moApi");
   const scoreElement = document.getElementById("moAccel");
   const timerElement = document.getElementById("timer");
