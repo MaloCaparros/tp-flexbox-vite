@@ -34,14 +34,17 @@ window.addEventListener('DOMContentLoaded', function () {
       scoreElement.textContent = info;
       if (acceleration.y.toFixed(3) > 2 || acceleration.y.toFixed(3) < -2){
         score = score + 0.01;
+        navigator.vibrate(200);
       }
       if (acceleration.y.toFixed(3) > 2 || acceleration.y.toFixed(3) < -2){
         score = score + 0.05;
+        navigator.vibrate(300);
       }
       if (acceleration.y.toFixed(3) > 5 || acceleration.y.toFixed(3) < -5){
         score = score + 0.1;
+        navigator.vibrate(500);
       }
-      pointsElement.textContent = score.toFixed(1);
+      pointsElement.textContent = score.toFixed(2);
 
     } else {
       scoreElement.textContent = 'N/A';
@@ -60,7 +63,7 @@ window.addEventListener('DOMContentLoaded', function () {
       if (sensor) {
         sensor.stop();
       }
-      alert("Temps écoulé ! vous avez obtenu " + score.toFixed(1) + " points.");
+      alert("Temps écoulé ! vous avez obtenu " + score.toFixed(2) + "litre de lait.");
     }
   }, 1000);
 });
