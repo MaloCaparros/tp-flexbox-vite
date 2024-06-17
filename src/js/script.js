@@ -22,17 +22,16 @@ window.addEventListener('DOMContentLoaded', function () {
               handleAcceleration(eventData.acceleration.y);
           }, false);
       } else {
-          apiElement.innerHTML = 'No Accelerometer & Gyroscope API available';
       }
   }
 
   function handleAcceleration(y) {
       if (y !== null) {
+          let increment = 0.1;
           if (Math.abs(y) > 1) {
-              counter += 0.5;
-          } else {
-              counter += 0.1;
+              increment = 0.5;
           }
+          counter += increment;
           counterElement.textContent = counter.toFixed(1);
       }
   }
@@ -41,10 +40,9 @@ window.addEventListener('DOMContentLoaded', function () {
       console.log(`Interval: ${interval} ms`);
   }
 
-  // Démarrer le capteur de l'accéléromètre et le compteur d'une minute
   startSensor();
 
-  let timeLeft = 60; // Compte à rebours de 60 secondes
+  let timeLeft = 60; 
   timerElement.textContent = timeLeft;
 
   countdown = setInterval(() => {
