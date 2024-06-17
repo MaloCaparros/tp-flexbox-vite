@@ -7,10 +7,7 @@ window.addEventListener("DOMContentLoaded", function () {
   water.style =
     "height: 10em; -webkit-transition: all 15s ease-out; -moz-transition: all 15s ease-out; -o-transition: all 15s ease-out; transition: all 15s ease-out;";
   let score = 0;
-  
-  window.addEventListener("DOMContentLoaded", function () {
-    this.navigator.vibrate(20000);
-  });
+
 
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
 
