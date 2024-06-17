@@ -4,42 +4,28 @@ window.addEventListener('DOMContentLoaded', function () {
   let sensor;
   let countdown;
 
-  if ('LinearAccelerationSensor' in window) {
-
-    let lastReadingTimestamp;
-    sensor = new LinearAccelerationSensor({ frequency: 60 });
-    sensor.addEventListener('reading', () => {
-      if (lastReadingTimestamp) {
-        intervalHandler(Math.round(sensor.timestamp - lastReadingTimestamp));
-      }
-      lastReadingTimestamp = sensor.timestamp;
-      accelerationHandler(sensor.y, 'moAccel');
-    });
-    sensor.start();
-
-  } else if ('DeviceMotionEvent' in window) {
-
-    var onDeviceMotion = function (eventData) {
-      accelerationHandler(eventData.acceleration.y, 'moAccel');
-      intervalHandler(eventData.interval);
+  function startSensor() {
+    if ('LinearAccelerationSensor' in window) {
+      sensor = new LinearAccelerationSensor({ frequency: 60 });
+      sensor.addEventListener('reading', () => {
+        const y = sensor.y !== null ? sensor.y.toFixed(3) : 'N/A';
+        scoreElement.textContent = `Y: ${y}`;
+      });
+      sensor.start();
+    } else if ('DeviceMotionEvent' in window) {
+      window.addEventListener('devicemotion', (eventData) => {
+        const y = eventData.acceleration.y !== null ? eventData.acceleration.y.toFixed(3) : 'N/A';
+        scoreElement.textContent = `Y: ${y}`;
+      }, false);
+    } else {
+      alert('No Accelerometer API available');
     }
-
-    window.addEventListener('devicemotion', onDeviceMotion, false);
-  } else {
-    document.getElementById('moApi').innerHTML = 'No Accelerometer API available';
   }
 
-  function accelerationHandler(y, targetId) {
-    var info = `Y: ${y !== null ? y.toFixed(3) : 'N/A'}`;
-    document.getElementById(targetId).innerHTML = info;
-  }
+  // Démarrer le capteur de l'accéléromètre et le compteur d'une minute
+  startSensor();
 
-  function intervalHandler(interval) {
-    document.getElementById("moInterval").innerHTML = interval;
-  }
-
-  // Démarrer le compteur d'une minute
-  let timeLeft = 30;
+  let timeLeft = 60; // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
 
   countdown = setInterval(() => {
