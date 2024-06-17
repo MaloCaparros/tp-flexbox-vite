@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
   if ('LinearAccelerationSensor' in window) {
     apiElement.textContent = 'Generic Sensor API';
 
-    sensor = new LinearAccelerationSensor({ frequency: 60 });
+    sensor = new LinearAccelerationSensor({ frequency: 2 });
     sensor.addEventListener('reading', () => {
       accelerationHandler(sensor, 'moAccel');
     });
