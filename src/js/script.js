@@ -1,41 +1,49 @@
 window.addEventListener('DOMContentLoaded', function () {
   const timerElement = document.getElementById("timer");
   const scoreElement = document.getElementById("moAccel");
-  const apiElement = document.getElementById("moApi");
   let countdown;
   let sensor;
 
   function startSensor() {
-      if ('LinearAccelerationSensor' in window) {
-          apiElement.innerHTML = 'Generic Sensor API';
-          let lastReadingTimestamp;
-          sensor = new LinearAccelerationSensor({ frequency: 60 });
-          sensor.addEventListener('reading', () => {
-              if (lastReadingTimestamp) {
-                  intervalHandler(Math.round(sensor.timestamp - lastReadingTimestamp));
-              }
-              lastReadingTimestamp = sensor.timestamp;
-              accelerationHandler(sensor.y, 'moAccel');
-          });
-          sensor.start();
-      } else if ('DeviceMotionEvent' in window) {
-          apiElement.innerHTML = 'Device Motion API';
-          window.addEventListener('devicemotion', (eventData) => {
-              const y = eventData.acceleration.y !== null ? eventData.acceleration.y.toFixed(3) : 'N/A';
-              scoreElement.textContent = `Y: ${y}`;
-          }, false);
-      } else {
-          apiElement.innerHTML = 'No Accelerometer & Gyroscope API available';
+    if ('LinearAccelerationSensor' in window) {
+      document.getElementById('moApi').innerHTML = 'Generic Sensor API';
+    
+      let lastReadingTimestamp;
+      let accelerometer = new LinearAccelerationSensor();
+      accelerometer.addEventListener('reading', () => {
+        if (lastReadingTimestamp) {
+          intervalHandler(Math.round(accelerometer.timestamp - lastReadingTimestamp));
+        }
+        lastReadingTimestamp = accelerometer.timestamp;
+        accelerationHandler(accelerometer, 'moAccel');
+      });
+      accelerometer.start();
+    
+    
+    } else if ('DeviceMotionEvent' in window) {
+      document.getElementById('moApi').innerHTML = 'Device Motion API';
+    
+      var onDeviceMotion = function (eventData) {
+        accelerationHandler(eventData.acceleration, 'moAccel');
+        intervalHandler(eventData.interval);
       }
-  }
-
-  function accelerationHandler(y, targetId) {
-      const info = `Y: ${y !== null ? y.toFixed(3) : 'N/A'}`;
-      document.getElementById(targetId).innerHTML = info;
-  }
-
-  function intervalHandler(interval) {
-      console.log(`Interval: ${interval} ms`);
+    
+      window.addEventListener('devicemotion', onDeviceMotion, false);
+    
+    }
+    
+    function accelerationHandler(acceleration, targetId) {
+      var info = `[X, Y, Z]`;
+    
+      info = info.replace("X", acceleration.x !== null ? acceleration.x.toFixed(3) : 'Nan');
+      info = info.replace("Y", acceleration.y !== null ? acceleration.y.toFixed(3) : 'Nan');
+      info = info.replace("Z", acceleration.z !== null ? acceleration.z.toFixed(3) : 'Nan');
+      document.getElementById(scoreElement).innerHTML = info;
+    }
+    
+    function intervalHandler(interval) {
+      document.getElementById("moInterval").innerHTML = interval;
+    }
   }
 
   // Démarrer le capteur de l'accéléromètre et le compteur d'une minute
