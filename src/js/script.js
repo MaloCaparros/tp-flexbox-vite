@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  let timeLeft = 60; // Compte à rebours de 60 secondes
+  let timeLeft = 20; // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
 
   let countdown = setInterval(() => {
