@@ -32,10 +32,10 @@ window.addEventListener('DOMContentLoaded', function () {
     if (acceleration && acceleration.y !== null) {
       const info = `Y: ${acceleration.y.toFixed(3)}`;
       scoreElement.textContent = info;
-      if (acceleration.y.toFixed(3) > 0.5){
-        score++;
-        pointsElement.textContent = score;
+      if (acceleration.y.toFixed(3) > 2){
+        score = score + 0.1;
       }
+      pointsElement.textContent = score;
 
     } else {
       scoreElement.textContent = 'N/A';
