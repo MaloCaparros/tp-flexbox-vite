@@ -40,43 +40,33 @@
   background-attachment: fixed;
   background-position: center;
 }
-.gamehome_img {
-  width: 130%;
-  position: absolute;
-  top: 47vh;
-  transform: translateX(-50px);
-  z-index: 20;
+.gamestart{
+  position:relative;
+  height:100vh;
+  width:100vw;
+  background-color:rgba(0, 0, 0, 0.658);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-.gamehome_img2 {
-  position: absolute;
-  width: 300%;
-  transform: translate(-250px, -600px);
-  z-index: 5;
+#start{
+  position:absolute;
+  width:150px;
+  height:150px;
+  background-color:rgba(0, 0, 0, 0.658);
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:30px;
+  color:white;
+  cursor:pointer;
+  transition:0.5s;
+  border:none;
 }
-.gamehome_img3 {
-  width: 130%;
-  position: absolute;
-  top: 70.5vh;
-  transform: translateX(-50px);
-  z-index: 5;
+.gameplay{
+  display:none;
 }
-.gamehome_imgcontainer {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-
-#glass {
-  display: flex;
-  justify-content: center;
-  height: 200px;
-  position: relative;
-  border-radius: 100%;
-  z-index: 19;
-  top: 60vh;
-}
-
 #water {
   background-image: url("./../photo/vague.png");
   position: absolute;
@@ -85,4 +75,30 @@
   height: 5em;
 
 }
+.wavy{
+  position:relative;
+  width:300px;
+  height:200px;
+  overflow:hidden;
+  transform:rotate(90deg);
+}
+.wavy:before{
+  content: 'aaaaaaaa';
+  position:absolute;
+  font-size:6em;
+  text-decoration-style:wavy;
+  text-decoration-color:#fff;
+  text-decoration-line:underline;
+  top:-42px;
+  color:transparent;
+  animation: animate 2s linear infinite;
+}
 
+@keyframes animate{
+  0%{
+    transform: translateX(-1px);
+  }
+  100%{
+    transform: translateX(150px);
+  }
+}

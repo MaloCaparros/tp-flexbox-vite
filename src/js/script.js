@@ -1,8 +1,11 @@
 const start = document.getElementById("start");
+const gamestart = document.querySelector(".gamestart");
+const gameplay = document.querySelector(".gameplay");
 
 start.addEventListener("click", function () {
   navigator.vibrate(3000);
-  const apiElement = document.getElementById("moApi");
+  gamestart.style.display = "none";
+  gameplay.style.display = "block";
   const scoreElement = document.getElementById("moAccel");
   const timerElement = document.getElementById("timer");
   const pointsElement = document.getElementById("point");
@@ -15,7 +18,7 @@ start.addEventListener("click", function () {
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
 
   if ("LinearAccelerationSensor" in window) {
-    apiElement.textContent = "Generic Sensor API";
+  
 
     sensor = new LinearAccelerationSensor({ frequency: 2 });
     sensor.addEventListener("reading", () => {
@@ -23,7 +26,6 @@ start.addEventListener("click", function () {
     });
     sensor.start();
   } else if ("DeviceMotionEvent" in window) {
-    apiElement.textContent = "Device Motion API";
 
     window.addEventListener(
       "devicemotion",
@@ -72,6 +74,8 @@ start.addEventListener("click", function () {
       alert(
         "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
       );
+      gamestart.style.display = "block";
+      gameplay.style.display = "none";
       
     }
   }, 1000);
