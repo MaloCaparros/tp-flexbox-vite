@@ -9,8 +9,7 @@ start.addEventListener("click", function () {
   const timerElement = document.getElementById("timer");
   const pointsElement = document.getElementById("point");
   const water = document.getElementById("water");
-  water.style =
-    "height: 10em; -webkit-transition: all 15s ease-out; -moz-transition: all 15s ease-out; -o-transition: all 15s ease-out; transition: all 15s ease-out;";
+
   let score = 0;
 
 
@@ -52,15 +51,15 @@ start.addEventListener("click", function () {
     } else {
     }
   }
-
   let timeLeft = 20; // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
-  
-
-
   let countdown = setInterval(() => {
     timeLeft--;
     timerElement.textContent = timeLeft;
+    if (timeLeft <= 20){
+      water.style =
+      "height: 10em;";
+    }
     if (timeLeft <= 0) {
       clearInterval(countdown);
       if (sensor) {
@@ -69,7 +68,7 @@ start.addEventListener("click", function () {
       alert(
         "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
       );
-      gamestart.style.display = "block";
+      gamestart.style.display = "flex";
       gameplay.style.display = "none";
       
     }

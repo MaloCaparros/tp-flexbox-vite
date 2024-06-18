@@ -40,65 +40,140 @@
   background-attachment: fixed;
   background-position: center;
 }
-.gamestart{
-  position:relative;
-  height:100vh;
-  width:100vw;
-  background-color:rgba(0, 0, 0, 0.658);
-  display:flex;
-  justify-content:center;
-  align-items:center;
+.gamestart {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.658);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#start{
-  position:absolute;
-  width:150px;
-  height:150px;
-  background-color:rgba(0, 0, 0, 0.658);
-  border-radius:50%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:30px;
-  color:white;
-  cursor:pointer;
-  transition:0.5s;
-  border:none;
+#start {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-color: rgba(0, 0, 0, 0.658);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  transition: 0.5s;
+  border: none;
 }
-.gameplay{
-  display:none;
+.gameplay {
+  display: none;
 }
+.top {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px;
+  z-index: 999;
+}
+.game {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.milk {
+  transform: translateY(-1200px);
+  position: relative;
+}
+.milk .wavy {
+  position: absolute;
+  z-index: 10;
+  top:-400px;
+  
+}
+.milk .wavy:first-child {
+  top: 200px;
+  left: -340px;
+}
+.milk .wavy:nth-child(2) {
+  top: 140px;
+  left: -245px;
+}
+.milk .wavy:nth-child(3) {
+  top: 180px;
+  left: -140px;
+}
+.milk .wavy:nth-child(4) {
+  top: 160px;
+  left: -60px;
+}
+#cow {
+  width: 300vw;
+  transform: translate(-250px, -580px);
+  position: relative;
+  z-index: 900;
+}
+#tonneau {
+  transform: translate(-90px, -900px);
+  width: 150vw;
+  position: relative;
+  z-index: 5;
+}
+#fond_tonneau {
+  transform: translate(-90px, -1405px);
+  width: 150vw;
+  position: relative;
+  z-index: -1;
+}
+#container {
+  transform: translate(0, -1370px);
+}
+
 #water {
   background-image: url("./../photo/vague.png");
   position: absolute;
   bottom: 0px;
   width: 390px;
   height: 5em;
+  -webkit-transition: all 15s ease-out;
+  -moz-transition: all 15s ease-out;
+  -o-transition: all 15s ease-out;
+  transition: all 15s ease-out;
+}
+.wavy {
+  position: relative;
+  width: 80vh;
+  height: 200px;
+  overflow: hidden;
+  transform: rotate(90deg);
+  animation: transi 4s;
+  z-index: 10;
+}
+.wavy:before {
+  content: "aaaaaaaaaaaaaa";
+  position: absolute;
+  font-size: 6em;
+  text-decoration-style: wavy;
+  text-decoration-color: #fff;
+  text-decoration-line: underline;
+  top: -42px;
+  color: transparent;
+  animation: animate 3s linear infinite;
+}
 
-}
-.wavy{
-  position:relative;
-  width:300px;
-  height:200px;
-  overflow:hidden;
-  transform:rotate(90deg);
-}
-.wavy:before{
-  content: 'aaaaaaaa';
-  position:absolute;
-  font-size:6em;
-  text-decoration-style:wavy;
-  text-decoration-color:#fff;
-  text-decoration-line:underline;
-  top:-42px;
-  color:transparent;
-  animation: animate 2s linear infinite;
+@keyframes transi {
+  0% {
+    transform: translateY(-300px) rotate(90deg);
+  }
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
 }
 
-@keyframes animate{
-  0%{
+@keyframes animate {
+  0% {
     transform: translateX(-1px);
   }
-  100%{
+  100% {
     transform: translateX(150px);
   }
 }
