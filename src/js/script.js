@@ -6,7 +6,6 @@ start.addEventListener("click", function () {
   navigator.vibrate(3000);
   gamestart.style.display = "none";
   gameplay.style.display = "block";
-  const scoreElement = document.getElementById("moAccel");
   const timerElement = document.getElementById("timer");
   const pointsElement = document.getElementById("point");
   const water = document.getElementById("water");
@@ -22,7 +21,7 @@ start.addEventListener("click", function () {
 
     sensor = new LinearAccelerationSensor({ frequency: 2 });
     sensor.addEventListener("reading", () => {
-      accelerationHandler(sensor, "moAccel");
+      accelerationHandler(sensor);
     });
     sensor.start();
   } else if ("DeviceMotionEvent" in window) {
@@ -30,19 +29,16 @@ start.addEventListener("click", function () {
     window.addEventListener(
       "devicemotion",
       (eventData) => {
-        accelerationHandler(eventData.acceleration, "moAccel");
+        accelerationHandler(eventData.acceleration);
         intervalHandler(eventData.interval);
       },
       false
     );
-  } else {
-    apiElement.textContent = "No Accelerometer & Gyroscope API available";
-  }
+  } 
 
-  function accelerationHandler(acceleration, targetId) {
+  function accelerationHandler(acceleration) {
     if (acceleration && acceleration.y !== null) {
       const info = `Y: ${acceleration.y.toFixed(3)}`;
-      scoreElement.textContent = info;
       if (acceleration.y.toFixed(3) > 2 || acceleration.y.toFixed(3) < -2) {
         score = score + 0.01;
       }
@@ -54,7 +50,6 @@ start.addEventListener("click", function () {
       }
       pointsElement.textContent = score.toFixed(2);
     } else {
-      scoreElement.textContent = "N/A";
     }
   }
 
