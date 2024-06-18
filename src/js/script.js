@@ -70,6 +70,8 @@ start.addEventListener("click", function () {
       );
       gamestart.style.display = "flex";
       gameplay.style.display = "none";
+      water.style =
+      "height: 5em;";
       
     }
   }, 1000);
