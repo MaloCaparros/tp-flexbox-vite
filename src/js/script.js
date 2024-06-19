@@ -1,6 +1,7 @@
 const start = document.getElementById("start");
 const gamestart = document.querySelector(".gamestart");
 const gameplay = document.querySelector(".gameplay");
+const traire = document.getElementById("button_milk");
 
 start.addEventListener("click", function () {
   navigator.vibrate(3000);
@@ -11,6 +12,10 @@ start.addEventListener("click", function () {
   const water = document.getElementById("water");
 
   let score = 0;
+  traire.addEventListener("click", function () {
+    score = score + 0.1;
+    pointsElement.textContent = score.toFixed(2);
+  });
 
 
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
@@ -48,10 +53,11 @@ start.addEventListener("click", function () {
         score = score + 0.1;
       }
       pointsElement.textContent = score.toFixed(2);
+
     } else {
     }
+
   }
-  /*
   let timeLeft = 20; // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
   let countdown = setInterval(() => {
@@ -76,5 +82,6 @@ start.addEventListener("click", function () {
       
     }
   }, 1000);
-  */
+
+
 });

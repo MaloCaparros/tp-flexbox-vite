@@ -113,6 +113,7 @@
   position: absolute;
   z-index: 900;
 }
+
 #tonneau {
   bottom:0;
   left:-40px;
@@ -120,6 +121,7 @@
   position:absolute;
   z-index: 100;
 }
+
 #fond_tonneau {
   width: 600px;
   left:-80px;
@@ -132,9 +134,31 @@
   bottom:150px;
   z-index:25;
 
-
 }
-
+#button_milk{
+  position:absolute;
+  border:none;
+  display:none;
+  text-decoration:none;
+  left:40vw;
+  padding:10px;
+  font-size:2rem;
+  border-radius:10px;
+  background-color:black;
+  color:white;
+  z-index:1000;
+  top:40px;
+  transition: all 0.5s ease;
+}
+#button_milk:hover{
+  background-color:blue;
+  transform: scale(1.1);
+}
+@media screen and (min-width:450px){
+  #button_milk{
+    display:block;
+  }
+}
 
 #water {
   background-image: url("./../photo/vague.png");
@@ -313,6 +337,19 @@
   .top div{
     font-size:2rem;
   }
+  #button_milk{
+    left:50vw;
+    top:40px;
+  }
+  #container{
+    position: absolute;
+    bottom:150px;
+    z-index:25;
+    left:150px;
+  }
+  #water {
+    width: 440px;
+  }
 }
 
 @media screen and (min-width:1000px){
@@ -354,6 +391,12 @@
   }
   .top div{
     font-size:2rem;
+  }
+  #container{
+    position: absolute;
+    bottom:150px;
+    z-index:25;
+    left:310px;
   }
 }
 
@@ -397,5 +440,19 @@
   .top div{
     font-size:2rem;
   }
+  #container{
+    position: absolute;
+    bottom:150px;
+    z-index:25;
+    left:510px;
+  }
+}
+@media screen and (min-width:1500px){
+  #button_milk{
+    left:40vw;
+    top:40px;
+
+  }
+ 
 }
 
