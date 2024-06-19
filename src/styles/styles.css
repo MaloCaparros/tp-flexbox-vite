@@ -80,9 +80,9 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  position: relative;
 }
 .milk {
-  transform: translateY(-1200px);
   position: relative;
 }
 .milk .wavy {
@@ -92,48 +92,55 @@
   
 }
 .milk .wavy:first-child {
-  top: 200px;
-  left: -340px;
+  top: 350px;
+  left: -400px;
 }
 .milk .wavy:nth-child(2) {
-  top: 140px;
-  left: -245px;
+  top: 300px;
+  left: -280px;
 }
 .milk .wavy:nth-child(3) {
-  top: 180px;
-  left: -140px;
+  top: 350px;
+  left: -150px;
 }
 .milk .wavy:nth-child(4) {
-  top: 160px;
-  left: -60px;
+  top: 300px;
+  left: -55px;
 }
 #cow {
-  width: 300vw;
-  transform: translate(-250px, -580px);
-  position: relative;
+  width: 1500px;
+  transform: translate(-340px, -800px);
+  position: absolute;
   z-index: 900;
 }
 #tonneau {
-  transform: translate(-90px, -900px);
-  width: 150vw;
-  position: relative;
-  z-index: 5;
+  bottom:0;
+  left:-40px;
+  width: 500px;
+  position:absolute;
+  z-index: 100;
 }
 #fond_tonneau {
-  transform: translate(-90px, -1405px);
-  width: 150vw;
-  position: relative;
-  z-index: -1;
+  width: 600px;
+  left:-80px;
+  position:absolute;
+  z-index: 1;
+  bottom:191px
 }
-#container {
-  transform: translate(0, -1370px);
+#container{
+  position: absolute;
+  bottom:150px;
+  z-index:25;
+
+
 }
+
 
 #water {
   background-image: url("./../photo/vague.png");
   position: absolute;
   bottom: 0px;
-  width: 390px;
+  width: 500px;
   height: 5em;
   -webkit-transition: all 15s ease-out;
   -moz-transition: all 15s ease-out;
@@ -142,7 +149,7 @@
 }
 .wavy {
   position: relative;
-  width: 80vh;
+  width: 800px;
   height: 200px;
   overflow: hidden;
   transform: rotate(90deg);
@@ -177,4 +184,91 @@
   100% {
     transform: translateX(150px);
   }
+}
+@media screen and (max-width:400px){
+
+  .milk .wavy:nth-child(3) {
+    top: 350px;
+    left: -180px;
+  }
+  .milk .wavy:nth-child(4) {
+    top: 350px;
+    left: -100px;
+  }
+  #cow {
+    width: 1300px;
+    transform: translate(-280px, -700px);
+    position: absolute;
+    z-index: 900;
+  }
+  #tonneau {
+    bottom:0;
+    left:-60px;
+    width: 500px;
+    position:absolute;
+    z-index: 100;
+  }
+  #fond_tonneau {
+    width: 600px;
+    left:-100px;
+    position:absolute;
+    z-index: 1;
+    bottom:191px
+  }
+
+}
+@media screen and (max-width:320px){
+  .milk .wavy:first-child {
+    top: 300px;
+    left: -390px;
+  }
+  .milk .wavy:nth-child(2) {
+    top: 250px;
+    left: -310px;
+  }
+  .milk .wavy:nth-child(3) {
+    top: 250px;
+    left: -220px;
+  }
+  .milk .wavy:nth-child(4) {
+    top: 250px;
+    left: -160px;
+  }
+  #cow {
+    width: 1000px;
+    transform: translate(-200px, -500px);
+    position: absolute;
+    z-index: 900;
+  }
+  #tonneau {
+    bottom:0;
+    left:-80px;
+    width: 500px;
+    position:absolute;
+    z-index: 100;
+  }
+  #fond_tonneau {
+    width: 600px;
+    left:-120px;
+    position:absolute;
+    z-index: 1;
+    bottom:191px
+  }
+
+
+}
+@media screen and (max-height:750px){
+  .milk .wavy:first-child {
+    top: 200px;
+  }
+  .milk .wavy:nth-child(2) {
+    top: 200px;
+  }
+  .milk .wavy:nth-child(3) {
+    top: 200px;
+  }
+  .milk .wavy:nth-child(4) {
+    top: 200px;
+  }
+ 
 }

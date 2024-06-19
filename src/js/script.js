@@ -51,7 +51,6 @@ start.addEventListener("click", function () {
     } else {
     }
   }
-  /*
   let timeLeft = 20; // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
   let countdown = setInterval(() => {
@@ -76,5 +75,5 @@ start.addEventListener("click", function () {
       
     }
   }, 1000);
-  */
+  
 });
