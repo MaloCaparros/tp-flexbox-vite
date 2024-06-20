@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const start = document.getElementById("start");
 const gamestart = document.querySelector(".gamestart");
 const gameplay = document.querySelector(".gameplay");
@@ -16,8 +18,6 @@ start.addEventListener("click", function () {
     score = score + 0.1;
     pointsElement.textContent = score.toFixed(2);
   });
-
-  
 
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
 
@@ -76,7 +76,7 @@ start.addEventListener("click", function () {
 
       let playerName = document.getElementById("name").value; // Récupérer le nom du joueur
       let finalScore = score.toFixed(2); // Récupérer le score final
-    
+
       let gameData = {
         playerName: playerName,
         score: finalScore,
@@ -84,8 +84,13 @@ start.addEventListener("click", function () {
       axios
         .post("https://vachibox.vercel.app/saveGameData", gameData)
         .then((response) => {
+          // Gérer la réponse si nécessaire
         })
         .catch((error) => {
+          console.error(
+            "Erreur lors de l'envoi des données au serveur :",
+            error
+          );
         });
 
       gamestart.style.display = "flex";
