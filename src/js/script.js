@@ -1,5 +1,3 @@
-import axios from "axios";
-
 const start = document.getElementById("start");
 const gamestart = document.querySelector(".gamestart");
 const gameplay = document.querySelector(".gameplay");
