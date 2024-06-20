@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware pour activer CORS avec des options spécifiques
 app.use(cors({
-  origin: 'http://localhost:5173', // Autoriser uniquement les requêtes provenant de ce domaine
+  origin: 'https://vachibox.netlify.app/', // Autoriser uniquement les requêtes provenant de ce domaine
   methods: ['GET', 'POST'], // Autoriser les méthodes GET et POST
   allowedHeaders: ['Content-Type'], // Autoriser le header Content-Type
 }));

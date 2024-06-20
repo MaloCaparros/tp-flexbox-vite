@@ -92,7 +92,7 @@ start.addEventListener("click", function () {
         score: finalScore,
       };
       axios
-        .post("http://localhost:3000/saveGameData", gameData)
+        .post("https://vachibox.netlify.app/saveGameData", gameData)
         .then((response) => {
         })
         .catch((error) => {
