@@ -72,6 +72,7 @@ start.addEventListener("click", function () {
       if (sensor) {
         sensor.stop();
       }
+      navigator.vibrate(2000);
       alert(
         "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
       );
