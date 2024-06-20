@@ -68,21 +68,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap:50px;
 }
-#start {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  background-color: rgba(0, 0, 0, 0.658);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
+
+#name{
+  text-align: center;
+  border:none;
+  border-radius: 10px;
+  padding: 10px;
+  width: 50%;
+}
+#start{
+  text-decoration: none;
   color: white;
-  cursor: pointer;
-  transition: 0.5s;
-  border: none;
+  background-color: #00000080;
+  padding: 15px 30px;
+  border:none;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 40px;
 }
 .gameplay {
   display: none;
@@ -236,7 +241,7 @@
   background-attachment: fixed;
   background-position: center;
   display: flex;
-  padding:50px;
+  padding:5vw;
   justify-content: space-between;
   align-items:center;
   flex-direction: column;
@@ -246,7 +251,6 @@
 .classement_titre{
   font-size: 3.2rem;
   padding:10px;
-  width: 80%;
   margin: 0 auto;
   text-align: center;
   line-height: 0.9;
@@ -258,7 +262,6 @@
 #classement_tableau ol li{
   font-size: 2rem;
   font-weight: bold;
-  text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .classement_link{
@@ -274,6 +277,26 @@
   border-radius: 10px;
   text-align: center;
   font-size: 20px;
+}
+@media screen and (max-width:450px){
+  .classement_titre{
+    font-size: 2rem;
+  }
+  #classement_tableau ol li{
+    font-size: 1.5rem;
+  }
+  .classement_retour_accueil, .classement_rejouer{
+    padding: 10px;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width:320px){
+  .classement_titre{
+    font-size: 1.5rem;
+  }
+  #classement_tableau ol li{
+    font-size: 1rem;
+  }
 }
 
 
@@ -307,7 +330,6 @@
     z-index: 1;
     bottom:191px
   }
-
 }
 @media screen and (max-width:320px){
   .milk .wavy:first-child {
