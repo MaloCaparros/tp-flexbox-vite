@@ -17,8 +17,6 @@ start.addEventListener("click", function () {
     pointsElement.textContent = score.toFixed(2);
   });
 
-  
-
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
 
   if ("LinearAccelerationSensor" in window) {
@@ -74,18 +72,28 @@ start.addEventListener("click", function () {
           " litres de lait."
       );
 
-      let playerName = document.getElementById("name").value; // Récupérer le nom du joueur
-      let finalScore = score.toFixed(2); // Récupérer le score final
-    
+      let playerName = document.getElementById("name").value;
+      let finalScore = score.toFixed(2);
+
       let gameData = {
         playerName: playerName,
         score: finalScore,
       };
-      axios
-        .post("https://vachibox.netlify.app/saveGameData", gameData)
-        .then((response) => {
+
+      // Utilisation de Fetch pour effectuer la requête POST
+      fetch("/saveGameData", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(gameData),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Réponse du serveur :", data);
         })
         .catch((error) => {
+          console.error("Erreur lors de la requête POST :", error);
         });
 
       gamestart.style.display = "flex";
