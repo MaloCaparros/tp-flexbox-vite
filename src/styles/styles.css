@@ -248,6 +248,10 @@
   height: 100vh;
   gap: 50px;
 }
+.classement_tableau{
+  height:50vh;
+  overflow:scroll;
+}
 .classement_titre{
   font-size: 3.2rem;
   padding:10px;
