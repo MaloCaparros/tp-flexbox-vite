@@ -29,13 +29,16 @@ app.post('/saveGameData', async (req, res) => {
 
   try {
     const dataFilePath = path.join(__dirname, 'data.json');
+    console.log('Chemin du fichier data.json:', dataFilePath);
 
-    // Lecture du fichier data.json actuel (s'il existe)
     let data = [];
-    const existingData = await fs.readFile(dataFilePath, 'utf-8');
-    if (existingData) {
+    try {
+      const existingData = await fs.readFile(dataFilePath, 'utf-8');
       data = JSON.parse(existingData);
+    } catch (readError) {
+      console.log('Aucun fichier data.json existant, création d\'un nouveau.');
     }
+
 
     // Ajouter les nouvelles données de jeu
     data.push(gameData);
