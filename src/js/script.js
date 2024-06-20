@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const start = document.getElementById("start");
 const gamestart = document.querySelector(".gamestart");
 const gameplay = document.querySelector(".gameplay");
@@ -17,19 +19,25 @@ start.addEventListener("click", function () {
     pointsElement.textContent = score.toFixed(2);
   });
 
+  let playerName = document.getElementById("name").value; // Récupérer le nom du joueur
+  let finalScore = score.toFixed(2); // Récupérer le score final
+
+  let gameData = {
+    playerName: playerName,
+    score: finalScore,
+  };
+
+  
 
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
 
   if ("LinearAccelerationSensor" in window) {
-  
-
     sensor = new LinearAccelerationSensor({ frequency: 2 });
     sensor.addEventListener("reading", () => {
       accelerationHandler(sensor);
     });
     sensor.start();
   } else if ("DeviceMotionEvent" in window) {
-
     window.addEventListener(
       "devicemotion",
       (eventData) => {
@@ -38,7 +46,7 @@ start.addEventListener("click", function () {
       },
       false
     );
-  } 
+  }
 
   function accelerationHandler(acceleration) {
     if (acceleration && acceleration.y !== null) {
@@ -53,19 +61,16 @@ start.addEventListener("click", function () {
         score = score + 0.1;
       }
       pointsElement.textContent = score.toFixed(2);
-
     } else {
     }
-
   }
   let timeLeft = 20; // Compte à rebours de 60 secondes
   timerElement.textContent = timeLeft;
   let countdown = setInterval(() => {
     timeLeft--;
     timerElement.textContent = timeLeft;
-    if (timeLeft <= 20){
-      water.style =
-      "height: 10em;";
+    if (timeLeft <= 20) {
+      water.style = "height: 10em;";
     }
     if (timeLeft <= 0) {
       clearInterval(countdown);
@@ -74,15 +79,28 @@ start.addEventListener("click", function () {
       }
       navigator.vibrate(2000);
       alert(
-        "Temps écoulé ! vous avez obtenu " + score.toFixed(2) + " litres de lait."
+        "Temps écoulé ! vous avez obtenu " +
+          score.toFixed(2) +
+          " litres de lait."
       );
+
+      let playerName = document.getElementById("name").value; // Récupérer le nom du joueur
+      let finalScore = score.toFixed(2); // Récupérer le score final
+    
+      let gameData = {
+        playerName: playerName,
+        score: finalScore,
+      };
+      axios
+        .post("http://localhost:3000/saveGameData", gameData)
+        .then((response) => {
+        })
+        .catch((error) => {
+        });
+
       gamestart.style.display = "flex";
       gameplay.style.display = "none";
-      water.style =
-      "height: 5em;";
-      
+      water.style = "height: 5em;";
     }
   }, 1000);
-
-
 });
