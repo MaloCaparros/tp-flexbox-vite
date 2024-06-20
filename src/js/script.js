@@ -72,8 +72,8 @@ start.addEventListener("click", function () {
           " litres de lait."
       );
 
-      let playerName = document.getElementById("name").value; // Récupérer le nom du joueur
-      let finalScore = score.toFixed(2); // Récupérer le score final
+      let playerName = document.getElementById("name").value; 
+      let finalScore = score.toFixed(2); 
 
       let gameData = {
         playerName: playerName,
