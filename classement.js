@@ -1,6 +1,6 @@
 
 function chargerJSON() {
-    fetch('https://vachibox.netlify.app/data.json')  // Assurez-vous que l'URL est correcte
+    fetch('https://vachibox.vercel.app/data.json')  // Assurez-vous que l'URL est correcte
         .then(response => {
             if (!response.ok) {
                 throw new Error('Erreur HTTP ' + response.status);
