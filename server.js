@@ -41,10 +41,6 @@ app.post('/saveGameData', async (req, res) => {
     data.push(gameData);
 
     try {
-      // Log pour vérifier le chemin du fichier et les données
-      console.log('Chemin du fichier data.json :', dataFilePath);
-      console.log('Données à écrire dans le fichier :', JSON.stringify(data, null, 2));
-
       await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2));
       res.status(200).send('Données sauvegardées avec succès');
     } catch (writeError) {
