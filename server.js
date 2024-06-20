@@ -20,17 +20,14 @@ app.use(cors({
 // Middleware pour parser les requêtes JSON
 app.use(express.json());
 
-// Endpoint POST pour sauvegarder les données
 app.post('/saveGameData', async (req, res) => {
   const gameData = req.body;
 
-  // Validation simple des données
   if (!gameData.playerName || !gameData.score) {
     return res.status(400).send('Données invalides : playerName et score sont requis');
   }
 
   try {
-    // Résolution du chemin du fichier data.json
     const dataFilePath = path.join(__dirname, 'data.json');
 
     // Lecture du fichier data.json actuel (s'il existe)
