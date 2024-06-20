@@ -12,9 +12,9 @@ const app = express();
 
 // Middleware pour activer CORS avec des options spécifiques
 app.use(cors({
-  origin: 'https://vachibox.vercel.app/', // Autoriser uniquement les requêtes provenant de ce domaine
-  methods: ['GET', 'POST'], // Autoriser les méthodes GET et POST
-  allowedHeaders: ['Content-Type'], // Autoriser le header Content-Type
+  origin: 'https://vachibox.netlify.app', // Supprimez la barre oblique à la fin de l'URL
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
 }));
 
 // Middleware pour parser les requêtes JSON
