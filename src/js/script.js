@@ -19,14 +19,6 @@ start.addEventListener("click", function () {
     pointsElement.textContent = score.toFixed(2);
   });
 
-  let playerName = document.getElementById("name").value; // Récupérer le nom du joueur
-  let finalScore = score.toFixed(2); // Récupérer le score final
-
-  let gameData = {
-    playerName: playerName,
-    score: finalScore,
-  };
-
   
 
   let sensor; // Déclarer sensor pour qu'il soit accessible globalement
