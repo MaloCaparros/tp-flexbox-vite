@@ -28,23 +28,19 @@
 ##  Quick Links
 
 > - [ Overview](#-overview)
-> - [ Features](#-features)
 > - [ Repository Structure](#-repository-structure)
 > - [ Modules](#-modules)
 > - [ Getting Started](#-getting-started)
 >   - [ Installation](#-installation)
 >   - [ Running vachibox](#-running-vachibox)
->   - [ Tests](#-tests)
 > - [ Project Roadmap](#-project-roadmap)
-> - [ Contributing](#-contributing)
-> - [ License](#-license)
-> - [ Acknowledgments](#-acknowledgments)
+
 
 ---
 
 ##  Overview
 
-Cette application comporte une page d'accueil puis une page de jeu ou le but est pour les téléphone de secoué le plus rapidement possible son téléphone pour faire un maximum de point. Pour ordinateur, le but est de cliquer le plus de fois possible sur le bouton traire pour faire un maximum de point.
+Cette application a pour but de secouer le plus rapidement possible sont téléphones. Sur Pc, le but était de cliquer le plus de fois sur le bouton traire. Cette application ne fonctionne pas sur Iphone et sur les produits Apple. Lorsque vous avez fini de jouer, on peut retrouver un classement des différents utilisateurs qui ont joué avant vous.
 
 
 ##  Repository Structure
@@ -52,6 +48,7 @@ Cette application comporte une page d'accueil puis une page de jeu ou le but est
 ```sh
 └── vachibox/
     ├── README.md
+    ├── classement.js
     ├── icons
     │   ├── icons8-vache-16.png
     │   ├── icons8-vache-30.png
@@ -62,22 +59,26 @@ Cette application comporte une page d'accueil puis une page de jeu ou le but est
     ├── package-lock.json
     ├── package.json
     ├── pages
+    │   ├── classement.html
     │   └── jeu.html
-    └── src
-        ├── js
-        │   └── script.js
-        ├── photo
-        │   ├── Nouveau-projet.svg
-        │   ├── Tonneau.png
-        │   ├── fond-tonneau.png
-        │   ├── fond1.jpg
-        │   ├── fond2.jpg
-        │   ├── screenshot
-        │   │   ├── Capture_mobile.JPG
-        │   │   └── Capture_pc.JPG
-        │   └── vague.png
-        └── styles
-            └── styles.css
+    ├── server.js
+    ├── src
+    │   ├── js
+    │   │   └── script.js
+    │   ├── photo
+    │   │   ├── Nouveau-projet.svg
+    │   │   ├── Tonneau.png
+    │   │   ├── fond-tonneau.png
+    │   │   ├── fond1.jpg
+    │   │   ├── fond2.jpg
+    │   │   ├── screenshot
+    │   │   │   ├── Capture_mobile.JPG
+    │   │   │   └── Capture_pc.JPG
+    │   │   └── vague.png
+    │   └── styles
+    │       └── styles.css
+    ├── vercel.json
+    └── vite.config.js
 ```
 
 ---
@@ -89,9 +90,12 @@ Cette application comporte une page d'accueil puis une page de jeu ou le but est
 | File                                                                                        | Summary                                       |
 | ---                                                                                         | ---                                           |
 | [index.html](https://github.com/MaloCaparros/vachibox/blob/master/index.html)               | Fichier contenant la page d'accueil du site `index.html`        |
+| [server.js](https://github.com/MaloCaparros/vachibox/blob/master/server.js)                 | Serveur web déployé sur vercel `server.js`         |
 | [manifest.json](https://github.com/MaloCaparros/vachibox/blob/master/manifest.json)         | Fichier créant l'application mobile `manifest.json`     |
 | [package.json](https://github.com/MaloCaparros/vachibox/blob/master/package.json)           | Fichier package `package.json`      |
 | [package-lock.json](https://github.com/MaloCaparros/vachibox/blob/master/package-lock.json) | Fichier package `package-lock.json` |
+| [vite.config.js](https://github.com/MaloCaparros/vachibox/blob/master/vite.config.js)       | Configuration de mon vite pour qu'il puisse fonctionner avec axios `vite.config.js`    |
+| [vercel.json](https://github.com/MaloCaparros/vachibox/blob/master/vercel.json)             | Configuration serveur vercel `vercel.json`       |
 
 </details>
 
@@ -100,6 +104,7 @@ Cette application comporte une page d'accueil puis une page de jeu ou le but est
 | File                                                                            | Summary                                    |
 | ---                                                                             | ---                                        |
 | [jeu.html](https://github.com/MaloCaparros/vachibox/blob/master/pages/jeu.html) | Page de jeu de l'application `pages/jeu.html` |
+| [classement.html](https://github.com/MaloCaparros/vachibox/blob/master/pages/classement.html) | Page classement `pages/classement.html` |
 
 </details>
 
@@ -131,16 +136,30 @@ Assurez-vous que les dépendances suivantes sont installées sur votre système 
 
 ###  Installation
 
-1. Clonez le dépôt vachibox :
+1. Cloner le repository:
 
 ```sh
 git clone https://github.com/MaloCaparros/vachibox
 ```
 
-2. Accédez au répertoire du projet :
+2. Changer de directory:
 
 ```sh
 cd vachibox
+```
+
+3. Installer les dépendances:
+
+```sh
+npm install
+```
+
+###  Running vachibox
+
+Use the following command to run vachibox:
+
+```sh
+node app.js
 ```
 
 ###  Running vachibox
