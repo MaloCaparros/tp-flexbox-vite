@@ -26,7 +26,7 @@ app.post('/saveGameData', async (req, res) => {
   }
 
   try {
-    const dataFilePath = ("https://vachibox.vercel.app/data.json")
+    const dataFilePath = path.join(__dirname, 'data.json');
 
     let data = [];
     try {
