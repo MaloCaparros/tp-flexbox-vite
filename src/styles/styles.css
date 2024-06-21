@@ -82,7 +82,7 @@
 #start{
   text-decoration: none;
   color: white;
-  background-color: #00000080;
+  background-color: #2b2fff80;
   padding: 15px 30px;
   border:none;
   border-radius: 25px;
@@ -92,7 +92,7 @@
 .gamestart_back{
   text-decoration: none;
   color: white;
-  background-color: #2b2fff80;
+  background-color: #00000080;
   padding: 15px 30px;
   border:none;
   border-radius: 25px;
