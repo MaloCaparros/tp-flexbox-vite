@@ -4,23 +4,21 @@ import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import dotenv from 'dotenv';
 
-// Charger les variables d'environnement depuis le fichier .env
+
 dotenv.config();
 
 const app = express();
 
-// Configurer le middleware CORS
 const corsOptions = {
   origin: 'https://vachibox.netlify.app',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 };
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Enable pre-flight for all routes
+app.options('*', cors(corsOptions)); 
 
 app.use(express.json());
 
-// Initialiser Firebase avec les variables d'environnement
 const serviceAccount = {
   projectId: process.env.FIREBASE_PROJECT_ID,
   clientEmail: process.env.FIREBASE_CLIENT_EMAIL,

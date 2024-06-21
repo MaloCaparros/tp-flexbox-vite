@@ -17,7 +17,7 @@ start.addEventListener("click", function () {
     pointsElement.textContent = score.toFixed(2);
   });
 
-  let sensor; // Déclarer sensor pour qu'il soit accessible globalement
+  let sensor; 
 
   if ("LinearAccelerationSensor" in window) {
     sensor = new LinearAccelerationSensor({ frequency: 2 });
@@ -52,7 +52,7 @@ start.addEventListener("click", function () {
     } else {
     }
   }
-  let timeLeft = 20; // Compte à rebours de 60 secondes
+  let timeLeft = 20; 
   timerElement.textContent = timeLeft;
   let countdown = setInterval(() => {
     timeLeft--;
@@ -72,23 +72,27 @@ start.addEventListener("click", function () {
           " litres de lait."
       );
 
-      let playerName = document.getElementById("name").value; 
-      let finalScore = score.toFixed(2); 
+      let playerName = document.getElementById("name").value;
+
+      if (playerName.trim() === "") {
+        playerName = "Anonyme"; 
+      }
+      let finalScore = score.toFixed(2);
 
       let gameData = {
         playerName: playerName,
         score: finalScore,
       };
-      axios.post('https://vachibox.vercel.app/saveGameData', gameData ,{
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      .then(response => {
-      })
-      .catch(error => {
-        console.error('Erreur lors de l\'envoi des données:', error);
-      });
+      axios
+        .post("https://vachibox.vercel.app/saveGameData", gameData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {})
+        .catch((error) => {
+          console.error("Erreur lors de l'envoi des données:", error);
+        });
 
       gamestart.style.display = "flex";
       gameplay.style.display = "none";
