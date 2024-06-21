@@ -89,6 +89,26 @@
   text-align: center;
   font-size: 40px;
 }
+.gamestart_back{
+  text-decoration: none;
+  color: white;
+  background-color: #00000080;
+  padding: 15px 30px;
+  border:none;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 40px;
+}
+.gamestart_classement{
+  text-decoration: none;
+  color: white;
+  background-color: #00000080;
+  padding: 15px 30px;
+  border:none;
+  border-radius: 25px;
+  text-align: center;
+  font-size: 40px;
+}
 .gameplay {
   display: none;
 }
