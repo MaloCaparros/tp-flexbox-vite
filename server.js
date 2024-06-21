@@ -11,11 +11,13 @@ dotenv.config();
 const app = express();
 
 // Utiliser le middleware CORS
-app.use(cors({
+const corsOptions = {
   origin: 'https://vachibox.netlify.app',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
-}));
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));  // Enable pre-flight for all routes
 
 app.use(express.json());
 
