@@ -79,10 +79,7 @@ start.addEventListener("click", function () {
         playerName: playerName,
         score: finalScore,
       };
-      axios.post('https://vachibox.vercel.app/saveGameData', {
-        playerName: 'John Doe',
-        score: 42
-      }, {
+      axios.post('https://vachibox.vercel.app/saveGameData', gameData ,{
         headers: {
           'Content-Type': 'application/json',
         }
