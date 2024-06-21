@@ -10,6 +10,7 @@ dotenv.config();
 
 const app = express();
 
+// Utiliser le middleware CORS
 app.use(cors({
   origin: 'https://vachibox.netlify.app',
   methods: ['GET', 'POST'],
