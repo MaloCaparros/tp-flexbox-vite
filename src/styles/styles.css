@@ -97,7 +97,7 @@
   border:none;
   border-radius: 25px;
   text-align: center;
-  font-size: 40px;
+  font-size: 20px;
 }
 .gamestart_classement{
   text-decoration: none;
@@ -107,7 +107,7 @@
   border:none;
   border-radius: 25px;
   text-align: center;
-  font-size: 40px;
+  font-size: 20px;
 }
 .gameplay {
   display: none;
