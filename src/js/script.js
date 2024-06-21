@@ -85,7 +85,6 @@ start.addEventListener("click", function () {
         }
       })
       .then(response => {
-        console.log('Données envoyées avec succès:', response);
       })
       .catch(error => {
         console.error('Erreur lors de l\'envoi des données:', error);
