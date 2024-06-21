@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import cors from 'cors';
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
@@ -10,14 +9,14 @@ dotenv.config();
 
 const app = express();
 
-// Utiliser le middleware CORS
+// Configurer le middleware CORS
 const corsOptions = {
   origin: 'https://vachibox.netlify.app',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 };
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));  // Enable pre-flight for all routes
+app.options('*', cors(corsOptions)); // Enable pre-flight for all routes
 
 app.use(express.json());
 
@@ -25,11 +24,11 @@ app.use(express.json());
 const serviceAccount = {
   projectId: process.env.FIREBASE_PROJECT_ID,
   clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n')
+  privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
 };
 
 initializeApp({
-  credential: cert(serviceAccount)
+  credential: cert(serviceAccount),
 });
 
 const db = getFirestore();
@@ -53,7 +52,7 @@ app.post('/saveGameData', async (req, res) => {
 app.get('/data.json', async (req, res) => {
   try {
     const snapshot = await db.collection('gameData').get();
-    const data = snapshot.docs.map(doc => doc.data());
+    const data = snapshot.docs.map((doc) => doc.data());
     res.json(data);
   } catch (error) {
     console.error('Erreur lors de la lecture des données :', error);

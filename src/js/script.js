@@ -79,17 +79,20 @@ start.addEventListener("click", function () {
         playerName: playerName,
         score: finalScore,
       };
-      axios
-        .post("https://vachibox.vercel.app/saveGameData", gameData)
-        .then((response) => {
-          // Gérer la réponse si nécessaire
-        })
-        .catch((error) => {
-          console.error(
-            "Erreur lors de l'envoi des données au serveur :",
-            error
-          );
-        });
+      axios.post('https://vachibox.vercel.app/saveGameData', {
+        playerName: 'John Doe',
+        score: 42
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+      .then(response => {
+        console.log('Données envoyées avec succès:', response);
+      })
+      .catch(error => {
+        console.error('Erreur lors de l\'envoi des données:', error);
+      });
 
       gamestart.style.display = "flex";
       gameplay.style.display = "none";
