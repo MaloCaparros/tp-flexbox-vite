@@ -75,8 +75,11 @@ start.addEventListener("click", function () {
       let playerName = document.getElementById("name").value;
 
       if (playerName.trim() === "") {
-        playerName = "Anonyme"; 
+          playerName = "Anonyme"; 
+      } else if (playerName === null) {
+          playerName = "Anonyme";
       }
+      console.log('Nom du joueur :', playerName);
       let finalScore = score.toFixed(2);
 
       let gameData = {
