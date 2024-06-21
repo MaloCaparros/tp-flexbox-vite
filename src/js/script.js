@@ -79,7 +79,7 @@ start.addEventListener("click", function () {
       } else if (playerName === null) {
           playerName = "Anonyme";
       }
-      console.log('Nom du joueur :', playerName);
+      
       let finalScore = score.toFixed(2);
 
       let gameData = {
